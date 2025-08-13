@@ -89,7 +89,7 @@ export default function Cards({ title, cards }) {
                 <div className="p-6 flex flex-col justify-between h-56">
                   <div>
                     <h3
-                      className={`text-xl font-semibold mb-1 ${
+                      className={`text-xl font-semibold  ${
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -97,7 +97,7 @@ export default function Cards({ title, cards }) {
                     </h3>
 
                     <h6
-                      className={`text-md mb-3 ${
+                      className={`text-md  ${
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -106,11 +106,11 @@ export default function Cards({ title, cards }) {
                   </div>
 
                   <p
-                    className={`mb-6 text-xs ${
+                    className={` text-xs ${
                       theme === "dark" ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
-                    {card.description.split(" ").slice(0, 10).join(" ")}...
+                    {card.description.split(" ").slice(0, 8).join(" ")}...
                   </p>
 
                   <div className="flex justify-start">

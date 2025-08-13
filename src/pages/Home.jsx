@@ -101,17 +101,20 @@ function Home() {
     <div>
       <Banner />
       <Cards title={"Products"} cards={products} />
-      <div className="relative max-w-7xl m-auto text-white p-4">
-        <img src={middleBanner} alt="middleBanner" />
-        <div className="absolute top-1/3  left-36 w-64">
-          <h1 className="text-2xl mb-5">Orbit IT Solutions</h1>
-          <p>
+      <div className="relative max-w-7xl m-auto text-white p-4 ">
+        <img src={middleBanner} alt="middleBanner" className="w-full h-auto" />
+        <div className="absolute top-1/2 left-4 md:left-16 xl:left-36 2xl:left-36 transform -translate-y-1/2 w-64 p-2 ">
+          <h1 className="text-sm md:text-2xl  mb-1">Orbit IT Solutions</h1>
+          <p className="text-[5px] sm:text-xs w-20 sm:w-40 md:w-52  ">
             Delivering smart IT solutions, cloud services, and digital
             transformation for businesses worldwide.
           </p>
-          <button className="bg-blue-600 px-2 py-1 mt-5">Explore</button>
+          <button className="bg-blue-600 px-1 py-1 mt-1 text-xs">
+            Explore
+          </button>
         </div>
       </div>
+
       <Cards title={"Services"} cards={services} />
     </div>
   );

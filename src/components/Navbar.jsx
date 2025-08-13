@@ -200,7 +200,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <div key={item.name}>
                 <button
-                  className=" hover:text-gray-900  hover:bg-gray-50 block w-full text-left px-3 py-2 rounded-md  font-medium flex justify-between items-center hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
+                  className=" hover:text-gray-900  hover:bg-gray-50 block w-full text-left px-3 py-2 rounded-md  font-medium  justify-between items-center hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
                   onClick={() => toggleDropdown(item.name)}
                 >
                   {item.name}
