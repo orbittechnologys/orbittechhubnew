@@ -1,7 +1,9 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Banner from "./pages/Banner";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
+
 function App() {
   return (
     <Router>
@@ -13,13 +15,13 @@ function App() {
               path="/"
               element={
                 <>
-                  <Banner />
+                  <Home />
                 </>
               }
             />
           </Routes>
         </main>
-        {/* You can add a Footer component here later */}
+        <Footer />
       </div>
     </Router>
   );
