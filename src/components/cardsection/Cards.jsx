@@ -51,7 +51,7 @@ export default function Cards({ title, cards }) {
     <div
       className={`transition-colors duration-300 dark:bg-gray-900 dark:text-gray-50 px-4 sm:px-6 lg:px-8`}
     >
-      <div className="container px-4 py-12 max-w-7xl mx-auto">
+      <div className="container px-4 py-12 max-w-6xl mx-auto">
         <h1
           className={`text-3xl font-bold mb-8 transition-colors duration-300`}
         >

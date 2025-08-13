@@ -101,7 +101,7 @@ function Home() {
     <div>
       <Banner />
       <Cards title={"Products"} cards={products} />
-      <div className="relative max-w-7xl m-auto text-white p-4 ">
+      <div className="relative max-w-6xl m-auto text-white p-4 ">
         <img src={middleBanner} alt="middleBanner" className="w-full h-auto" />
         <div className="absolute top-1/2 left-4 md:left-16 xl:left-36 2xl:left-36 transform -translate-y-1/2 w-64 p-2 ">
           <h1 className="text-sm md:text-2xl  mb-1">Orbit IT Solutions</h1>

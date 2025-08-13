@@ -10,9 +10,33 @@ const Banner = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   const banners = [
-    { id: 1, image: ban1, alt: "Innovative technology solutions" },
-    { id: 2, image: ban2, alt: "Cloud computing services" },
-    { id: 3, image: ban3, alt: "Enterprise productivity tools" },
+    {
+      id: 1,
+      image: ban1,
+
+      heading: "Orbit Care",
+      subheading:
+        "A comprehensive end-to-end clinic management solution, featuring dedicated modules for doctor portals.",
+      buttonText: "Learn More",
+    },
+    {
+      id: 2,
+      image: ban2,
+
+      heading: "Orbit Learn",
+      subheading:
+        "A comprehensive Learning Management System designed for schools, colleges, and training institutions.",
+      buttonText: "Learn More",
+    },
+    {
+      id: 3,
+      image: ban3,
+
+      heading: "Orbit Connect",
+      subheading:
+        "A LinkedIn-style platform designed for organizations to create and nurture internal communities.",
+      buttonText: "Learn More",
+    },
   ];
 
   const nextSlide = () => {
@@ -36,7 +60,7 @@ const Banner = () => {
   return (
     <>
       <section
-        className="relative w-full  aspect-[16/6]  max-h-[800px] bg-gray-100 dark:bg-gray-900 dark:text-white"
+        className="relative w-full aspect-[16/6] max-h-[800px] bg-gray-100 dark:bg-gray-900 dark:text-white"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -53,20 +77,20 @@ const Banner = () => {
                 <img
                   src={banner.image}
                   alt={banner.alt}
-                  className="w-full h-full object-cover "
+                  className="w-full h-full object-cover"
                   loading={index === 0 ? "eager" : "lazy"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-black/10" />
 
-                <div className="absolute bottom-[20%] max-w-7xl text-white px-8 sm:px-10 lg:px-24 2xl:px-96">
-                  <h2 className="text-2xl  sm:text-3xl lg:text-4xl 2xl:text-7xl font-light ">
-                    Professional Headline
+                {/* White content box */}
+                <div className="absolute left-[5%] top-[10%] w-[40%] min-w-[300px] max-w-[600px] bg-white  p-6  shadow-xl">
+                  <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+                    {banner.heading}
                   </h2>
-                  <p className="text-xs  lg:text-lg mb-2">
-                    Supporting description text goes here.
+                  <p className="text-sm lg:text-base mb-6 text-gray-600 dark:text-gray-300">
+                    {banner.subheading}
                   </p>
-                  <button className="px-2 py-1 text-xs sm:text-sm md:text-base 2xl:text-xl  bg-blue-600 hover:bg-blue-700 transition-colors">
-                    Learn more
+                  <button className="px-4 py-2 bg-[#0067B8] hover:bg-blue-700 text-white transition-colors duration-300">
+                    {banner.buttonText}
                   </button>
                 </div>
               </div>
@@ -74,20 +98,18 @@ const Banner = () => {
           ))}
         </div>
       </section>
+
       {/* Slide Indicators - Fixed position */}
-      <div className="relative pt-2  flex justify-center gap-2 dark:bg-gray-900 dark:text-white">
+      <div className="relative pt-2 flex justify-center gap-2 dark:bg-gray-900 dark:text-white">
         <div className="relative flex items-center justify-center gap-2">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className=" rounded-full  outline outline-1 p-[2px]"
+            className="rounded-full outline outline-1 p-[2px]"
           >
             {isPlaying ? (
-              <FiPause
-                size={12}
-                className=" fill-black" // adds stroke and fill color
-              />
+              <FiPause size={12} className="fill-black dark:fill-white" />
             ) : (
-              <FiPlay className=" fill-black" size={12} />
+              <FiPlay className="fill-black dark:fill-white" size={12} />
             )}
           </button>
 
@@ -105,11 +127,11 @@ const Banner = () => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full border dark:border-white border-black transition-colors 
-        ${
-          currentSlide === index
-            ? "dark:bg-white bg-black"
-            : "bg-transparent hover:bg-white/50"
-        }`}
+                ${
+                  currentSlide === index
+                    ? "dark:bg-white bg-black"
+                    : "bg-transparent hover:bg-white/50"
+                }`}
             />
           ))}
 

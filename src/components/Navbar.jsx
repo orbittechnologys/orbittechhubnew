@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white dark:bg-gray-900 dark:text-gray-200 shadow-sm sticky top-0 z-50 ">
       {/* Top bar with hamburger menu, logo, and right icons */}
-      <div className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8 xl:px-0">
+      <div className="max-w-6xl mx-auto px-8 sm:px-8 lg:px-8 xl:px-0">
         <div className="flex justify-between h-16">
           {/* Left section - hamburger and logo */}
           <div className="flex items-center">
@@ -152,7 +152,7 @@ const Navbar = () => {
               </div>
             )}
 
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2 rounded-full focus:outline-none"
               aria-label={`Switch to ${
@@ -188,7 +188,7 @@ const Navbar = () => {
                   />
                 </svg>
               )}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
