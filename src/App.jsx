@@ -1,7 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Banner from "./pages/Banner";
+import Home from "./pages/Home";
+
 function App() {
   return (
     <Router>
@@ -13,7 +14,7 @@ function App() {
               path="/"
               element={
                 <>
-                  <Banner />
+                  <Home />
                 </>
               }
             />
