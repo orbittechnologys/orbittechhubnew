@@ -1,118 +1,82 @@
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
-import img from "../../assets/img/img.png";
-import img1 from "../../assets/img/img1.png";
-import img2 from "../../assets/img/img2.png";
-import img3 from "../../assets/img/img3.png";
 
-const cards = [
-  {
-    id: 1,
-    title: "Orbit Learn",
-    subtitle: "LMS & Digital Library",
-    image: img,
-    description:
-      "A comprehensive Learning Management System designed for schools, colleges, and training institutions.System designed for schools, colleges, andSystem designed for schools, colleges, andSystem designed for schools, colleges, and",
-    // color: "from-blue-400 to-blue-600",
-    iconColor: "text-blue-500",
-  },
-  {
-    id: 2,
-    title: "Standard Plan",
-    subtitle: "LMS & Digital Library",
-    image: img2,
-    description:
-      "Ideal for small teams looking for collaboration tools and more storage.",
-    // color: "from-green-400 to-green-600",
-    iconColor: "text-green-500",
-    price: "$19/mo",
-  },
-  {
-    id: 3,
-    title: "Pro Plan",
-    subtitle: "LMS & Digital Library",
-    image: img3,
-    description: "Advanced features and analytics for growing businesses.",
-    // color: "from-purple-400 to-purple-600",
-    iconColor: "text-purple-500",
-  },
-  {
-    id: 4,
-    title: "Business Plan",
-    subtitle: "LMS & Digital Library",
-    image: img1,
-    description:
-      "Comprehensive tools and priority support for large organizations.",
-    // color: "from-red-400 to-red-600",
-    iconColor: "text-red-500",
-  },
-];
-
-export default function Cards() {
-  const { theme } = useTheme();
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [loaded, setLoaded] = useState(false);
-
-  const elementRef = useRef(null);
+function FadeInSection({
+  children,
+  threshold = 0.2, // % of element that must be visible
+  rootMargin = "0px 0px", // tweak if you want earlier trigger
+  className = "", // extra classes for your content
+}) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    setLoaded(true);
+    const el = ref.current;
+    if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setLoaded(true);
-        }
+        setInView(entry.isIntersecting);
       },
-      { threshold: 0.2 }
+      { threshold, rootMargin }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-
+    observer.observe(el);
     return () => {
-      if (elementRef.current) observer.unobserve(elementRef.current);
+      observer.unobserve(el);
+      observer.disconnect();
     };
-  }, []);
+  }, [threshold, rootMargin]);
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300  dark:bg-gray-900 dark:text-gray-50 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8`}
+      ref={ref}
+      className={[
+        className,
+        "transition-all duration-500 ease-in-out transform",
+        "will-change-transform will-change-opacity",
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
+      ].join(" ")}
     >
-      <div className="container px-4 py-12">
+      {children}
+    </div>
+  );
+}
+
+export default function Cards({ title, cards }) {
+  const { theme } = useTheme();
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  return (
+    <div
+      className={`transition-colors duration-300 dark:bg-gray-900 dark:text-gray-50 px-4 sm:px-6 lg:px-8`}
+    >
+      <div className="container px-4 py-12 max-w-7xl mx-auto">
         <h1
-          className={`text-3xl font-bold mb-8  transition-colors duration-300`}
+          className={`text-3xl font-bold mb-8 transition-colors duration-300`}
         >
-          Products
+          {title}
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
           {cards.map((card, index) => (
-            <div
+            <FadeInSection
               key={card.id}
-              className={`relative max-w-xs rounded-sm overflow-hidden shadow-lg transition-all duration-500 ease-in-out transform 
-            ${
-              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            } 
-            ${selectedCard === card.id ? "ring-4 ring-blue-500 scale-105" : ""}
-            ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}
+              className={[
+                "relative max-w-xs rounded-sm overflow-hidden shadow-lg",
+                selectedCard === card.id
+                  ? "ring-4 ring-blue-500 scale-105"
+                  : "",
+                theme === "dark" ? "bg-gray-800" : "bg-white",
+                "hover:scale-105",
+              ].join(" ")}
               style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={() => setSelectedCard(card.id)}
-              onMouseEnter={(e) =>
-                e.currentTarget.classList.add("hover:scale-105")
-              }
-              onMouseLeave={(e) =>
-                e.currentTarget.classList.remove("hover:scale-105")
-              }
             >
-              {/* Gradient overlay */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br opacity-20 ${card.color}`}
               />
 
               <div className="relative z-10">
-                {/* FULL-WIDTH IMAGE */}
                 {card.image && (
                   <img
                     src={card.image}
@@ -122,7 +86,6 @@ export default function Cards() {
                   />
                 )}
 
-                {/* Card content */}
                 <div className="p-6 flex flex-col justify-between h-56">
                   <div>
                     <h3
@@ -134,7 +97,7 @@ export default function Cards() {
                     </h3>
 
                     <h6
-                      className={`text-md  mb-3 ${
+                      className={`text-md mb-3 ${
                         theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                     >
@@ -150,17 +113,17 @@ export default function Cards() {
                     {card.description.split(" ").slice(0, 10).join(" ")}...
                   </p>
 
-                  {/* Button only */}
                   <div className="flex justify-start">
                     <button
                       className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 
-                    ${
-                      selectedCard === card.id
-                        ? "bg-blue-600 text-white"
-                        : theme === "dark"
-                        ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                    }`}
+                        ${
+                          selectedCard === card.id
+                            ? "bg-blue-600 text-white"
+                            : theme === "dark"
+                            ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                        }`}
+                      onClick={() => setSelectedCard(card.id)}
                     >
                       {selectedCard === card.id ? "Selected" : "Learn More"}
                     </button>
@@ -168,7 +131,6 @@ export default function Cards() {
                 </div>
               </div>
 
-              {/* Selection indicator */}
               {selectedCard === card.id && (
                 <div className="absolute top-4 right-4">
                   <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
@@ -188,7 +150,7 @@ export default function Cards() {
                   </div>
                 </div>
               )}
-            </div>
+            </FadeInSection>
           ))}
         </div>
       </div>
