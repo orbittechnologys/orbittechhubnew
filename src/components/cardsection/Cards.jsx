@@ -54,8 +54,26 @@ export default function Cards() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Animation trigger after component mounts
+    // Run once on mount
     setLoaded(true);
+
+    // Intersection Observer for scroll trigger
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoaded(true);
+        }
+      },
+      { threshold: 0.2 } // Trigger when 20% of element is visible
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (elementRef.current) observer.unobserve(elementRef.current);
+    };
   }, []);
 
   return (
