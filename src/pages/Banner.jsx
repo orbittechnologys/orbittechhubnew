@@ -38,7 +38,7 @@ const Banner = () => {
 
   return (
     <section
-      className="relative w-full aspect-[16/6] max-h-[800px] bg-gray-100"
+      className=" w-full aspect-[16/6] max-h-[800px] bg-gray-100 dark:bg-gray-900"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -60,7 +60,7 @@ const Banner = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-black/10" />
 
-              <div className="absolute left-[10%] bottom-[20%] max-w-xl text-white">
+              <div className="absolute left-[10%] bottom-[20%] max-w-xl text-white ">
                 <h2 className="text-4xl font-light mb-4">
                   Professional Headline
                 </h2>
@@ -75,26 +75,6 @@ const Banner = () => {
           </div>
         ))}
       </div>
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className={`absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full focus:outline-none z-10 transition-all ${
-          isHovered ? "opacity-100" : "opacity-0"
-        }`}
-        aria-label="Previous slide"
-      >
-        <FiChevronLeft size={24} />
-      </button>
-      <button
-        onClick={nextSlide}
-        className={`absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full focus:outline-none z-10 transition-all ${
-          isHovered ? "opacity-100" : "opacity-0"
-        }`}
-        aria-label="Next slide"
-      >
-        <FiChevronRight size={24} />
-      </button>
 
       {/* Slide Indicators - Fixed position */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-20">
@@ -111,6 +91,26 @@ const Banner = () => {
           />
         ))}
       </div>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className={` left-4 top-1/2 -translate-y-1/2   p-3 rounded-full focus:outline-none z-10 transition-all ${
+          isHovered ? "opacity-100" : "opacity-0"
+        }`}
+        aria-label="Previous slide"
+      >
+        <FiChevronLeft size={24} />
+      </button>
+      <button
+        onClick={nextSlide}
+        className={` right-4 top-1/2 -translate-y-1/2   p-3 rounded-full focus:outline-none z-10 transition-all ${
+          isHovered ? "opacity-100" : "opacity-0"
+        }`}
+        aria-label="Next slide"
+      >
+        <FiChevronRight size={24} />
+      </button>
     </section>
   );
 };

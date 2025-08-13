@@ -77,10 +77,12 @@ export default function Cards() {
   }, []);
 
   return (
-    <div className={`min-h-screen transition-colors duration-300  bg-gray-50`}>
-      <div className="container mx-auto px-4 py-12">
+    <div
+      className={`min-h-screen transition-colors duration-300  dark:bg-gray-900 dark:text-gray-50 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8`}
+    >
+      <div className="container px-4 py-12">
         <h1
-          className={`text-3xl font-bold mb-8  transition-colors duration-300 text-gray-800`}
+          className={`text-3xl font-bold mb-8  transition-colors duration-300`}
         >
           Products
         </h1>

@@ -53,14 +53,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 ">
+    <nav className="bg-white dark:bg-gray-900 dark:text-gray-200 shadow-sm sticky top-0 z-50 ">
       {/* Top bar with hamburger menu, logo, and right icons */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-8 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Left section - hamburger and logo */}
           <div className="flex items-center">
             <button
-              className="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none"
+              className="md:hidden  hover:text-gray-400 hover:underline focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -77,9 +77,10 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <div key={item.name} className="relative">
                   <button
-                    className={`text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center ${
-                      activeDropdown === item.name ? "bg-gray-100" : ""
-                    }`}
+                    className={`px-3 py-2 md:px-2 rounded-md text-sm font-medium flex items-center
+                          ${activeDropdown === item.name ? "bg-gray-100" : ""}
+                  hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200
+                      `}
                     onClick={() => toggleDropdown(item.name)}
                   >
                     {item.name}
@@ -92,7 +93,7 @@ const Navbar = () => {
                         <a
                           key={subItem.name}
                           href={subItem.link}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block px-4 py-2 text-sm  hover:bg-gray-100"
                         >
                           {subItem.name}
                         </a>
@@ -110,7 +111,7 @@ const Navbar = () => {
               <>
                 <div className="hidden md:flex md:space-x-1">
                   <button
-                    className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                    className="  px-3 py-2 rounded-md text-sm font-medium "
                     onClick={toggleSearch}
                   >
                     <FiSearch size={20} />
@@ -118,14 +119,14 @@ const Navbar = () => {
 
                   <a
                     href="#"
-                    className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                    className="  px-3 py-2 rounded-md text-sm font-medium hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
                   >
                     Sign in
                   </a>
                 </div>
 
                 <button
-                  className="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none"
+                  className="md:hidden   focus:outline-none hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
                   onClick={toggleSearch}
                 >
                   <FiSearch size={20} />
@@ -143,7 +144,7 @@ const Navbar = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <button
-                  className="ml-2 text-gray-600 hover:text-gray-900"
+                  className="ml-2  hover:text-gray-900"
                   onClick={toggleSearch}
                 >
                   <FiX size={20} />
@@ -194,12 +195,12 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden dark:bg-gray-900 border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <div key={item.name}>
                 <button
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 block w-full text-left px-3 py-2 rounded-md text-base font-medium flex justify-between items-center"
+                  className=" hover:text-gray-900  hover:bg-gray-50 block w-full text-left px-3 py-2 rounded-md  font-medium flex justify-between items-center hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
                   onClick={() => toggleDropdown(item.name)}
                 >
                   {item.name}
@@ -217,7 +218,7 @@ const Navbar = () => {
                       <a
                         key={subItem.name}
                         href={subItem.link}
-                        className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md text-base font-medium"
+                        className="block px-3 py-2 hover:bg-gray-50 rounded-md  font-medium"
                       >
                         {subItem.name}
                       </a>
@@ -230,7 +231,7 @@ const Navbar = () => {
             <div className="border-t border-gray-200 pt-2">
               <a
                 href="#"
-                className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md text-base font-medium"
+                className="block px-3 py-2  hover:text-gray-900 hover:bg-gray-50 rounded-md text-base font-medium hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
               >
                 <div className="flex items-center">
                   <FiShoppingCart className="mr-2" size={20} />
@@ -239,7 +240,7 @@ const Navbar = () => {
               </a>
               <a
                 href="#"
-                className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md text-base font-medium"
+                className="block px-3 py-2  hover:text-gray-900 hover:bg-gray-50 rounded-md text-base font-medium hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
               >
                 Sign in
               </a>
