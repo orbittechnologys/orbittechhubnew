@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import img from "../../assets/img/img.png";
 import img1 from "../../assets/img/img1.png";
@@ -53,18 +53,18 @@ export default function Cards() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
+  const elementRef = useRef(null);
+
   useEffect(() => {
-    // Run once on mount
     setLoaded(true);
 
-    // Intersection Observer for scroll trigger
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setLoaded(true);
         }
       },
-      { threshold: 0.2 } // Trigger when 20% of element is visible
+      { threshold: 0.2 }
     );
 
     if (elementRef.current) {
@@ -77,25 +77,19 @@ export default function Cards() {
   }, []);
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${
-        theme === "dark" ? "bg-gray-900" : "bg-gray-50"
-      }`}
-    >
+    <div className={`min-h-screen transition-colors duration-300  bg-gray-50`}>
       <div className="container mx-auto px-4 py-12">
         <h1
-          className={`text-3xl font-bold mb-8  transition-colors duration-300 ${
-            theme === "dark" ? "text-white" : "text-gray-800"
-          }`}
+          className={`text-3xl font-bold mb-8  transition-colors duration-300 text-gray-800`}
         >
           Products
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
           {cards.map((card, index) => (
             <div
               key={card.id}
-              className={`relative rounded-sm overflow-hidden shadow-lg transition-all duration-500 ease-in-out transform 
+              className={`relative max-w-xs rounded-sm overflow-hidden shadow-lg transition-all duration-500 ease-in-out transform 
             ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             } 
@@ -151,7 +145,7 @@ export default function Cards() {
                       theme === "dark" ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
-                    {card.description.split(" ").slice(0, 14).join(" ")}...
+                    {card.description.split(" ").slice(0, 10).join(" ")}...
                   </p>
 
                   {/* Button only */}
