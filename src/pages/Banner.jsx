@@ -129,7 +129,7 @@ const Banner = () => {
                   <div
                     className="hidden sm:flex absolute 
                 left-[7%] top-[15%] lg:top-[20%] 
-                w-[40%] lg:w-[35%] 
+                w-[40%] lg:w-[40%] 
                 min-w-[250px] max-w-[550px] 
                 bg-white flex-col gap-4 p-8 lg:p-12 shadow-sm"
                   >
@@ -139,7 +139,7 @@ const Banner = () => {
                     <p className="text-sm lg:text-base mb-5 text-gray-600">
                       {banner.subheading}
                     </p>
-                    <button className="px-4 py-2 bg-[#005CA5] hover:bg-[#005ba5b9] text-white transition-colors max-w-[50%] duration-300">
+                    <button className="px-4 py-2 bg-[#005CA5] hover:bg-[#005ba5b9] text-white transition-colors max-w-[30%] duration-300">
                       {banner.buttonText}
                     </button>
                   </div>
