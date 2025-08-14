@@ -101,19 +101,24 @@ function Home() {
     <div>
       <Banner />
       <Cards title={"Products"} cards={products} />
-      <div className="relative max-w-6xl mx-auto text-white 2xl:max-w-[1700px]">
+      <div className="relative max-w-6xl mx-auto 2xl:max-w-[1700px]">
+        {/* Image Section - Full width on all devices */}
         <img
           src={middleBanner}
           alt="middleBanner"
-          className="w-full h-auto object-cover min-h-[300px]"
+          className="w-full h-auto object-cover min-h-[200px] md:min-h-[400px]"
         />
-        <div className="absolute top-1/2 left-16 transform -translate-y-1/2 w-96 p-6 ">
-          <h1 className="text-4xl font-semibold mb-4">Orbit IT Solutions</h1>
-          <p className="text-sm font-normal mb-6 leading-normal">
+
+        {/* Text Content - Below on mobile, overlay on desktop */}
+        <div className="md:absolute md:top-1/2 md:left-16 md:transform md:-translate-y-1/2 w-full md:w-96 p-6  text-gray-900 md:text-white">
+          <h1 className="text-4xl md:text-2xl font-semibold mb-4">
+            Orbit IT Solutions
+          </h1>
+          <p className="text-base md:text-sm mb-6">
             Delivering smart IT solutions, cloud services, and digital
             transformation for businesses worldwide.
           </p>
-          <button className="bg-[#0067B8] px-5 py-1.5 text-base font-medium hover:bg-[#005CA5] transition-colors duration-200 flex items-center">
+          <button className="bg-[#0067B8] px-6 py-2 text-base font-medium hover:bg-[#005CA5] transition-colors duration-200 flex items-center">
             Explore
           </button>
         </div>
