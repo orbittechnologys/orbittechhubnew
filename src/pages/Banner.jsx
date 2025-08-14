@@ -55,81 +55,116 @@ const Banner = () => {
   }, [isPlaying, isHovered]);
 
   return (
-    <div className="relative w-full">
-      {/* Banner Section - unchanged for desktop */}
-      <section
-        className="relative w-full aspect-[16/6] max-h-[800px] bg-gray-100  "
+    <div className="relative w-ful9">
+      {/* Mobile Layout  */}
+      <div
+        className="flex flex-col xl:hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Slides container */}
-        <div className="relative w-full h-full overflow-hidden">
-          {banners.map((banner, index) => (
-            <div
-              key={banner.id}
-              className={`absolute inset-0 transition-opacity duration-500 ${
-                currentSlide === index ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <div className="relative w-full h-full">
+        {/* Banner Section */}
+        <section className="relative w-full bg-gray-100 ">
+          <div className="relative w-full aspect-[16/9] sm:aspect-[16/7] overflow-hidden">
+            {banners.map((banner, index) => (
+              <div
+                key={banner.id}
+                className={`absolute inset-0 transition-opacity duration-500  ${
+                  currentSlide === index ? "opacity-100" : "opacity-0"
+                }`}
+              >
                 <img
                   src={banner.image}
                   alt={banner.heading}
                   className="w-full h-full object-cover"
                   loading={index === 0 ? "eager" : "lazy"}
                 />
-
-                {/* Desktop content box (unchanged) */}
-                <div className="hidden sm:block absolute left-[5%] top-[10%] w-[40%] min-w-[300px] max-w-[600px] bg-white  p-6 shadow-sm">
-                  <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold mb-4 text-gray-800 ">
-                    {banner.heading}
-                  </h2>
-                  <p className="text-sm lg:text-base mb-6 text-gray-600 ">
-                    {banner.subheading}
-                  </p>
-                  <button className="px-4 py-2 bg-[#005CA5] hover:bg-[#005ba5b9] text-white transition-colors duration-300">
-                    {banner.buttonText}
-                  </button>
-                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-      {/* Mobile content box (appears below banner) */}
-      <div className="sm:hidden w-full bg-white  p-4 shadow-xl">
-        <div className="max-w-[600px] mx-auto">
-          <h2 className="text-xl font-bold mb-2 text-gray-800 ">
-            {banners[currentSlide].heading}
-          </h2>
-          <p className="text-sm mb-4 text-gray-600 ">
-            {banners[currentSlide].subheading}
-          </p>
-          <button className="px-4 py-2 bg-[#0067B8] hover:bg-blue-700 text-white transition-colors duration-300">
-            {banners[currentSlide].buttonText}
-          </button>
+        {/* Card Section */}
+        <div className="lg:px-6 lg:mt-[-40px] z-10">
+          {" "}
+          <div className="bg-white w-full p-6 sm:p-8 shadow-md ">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
+              {banners[currentSlide].heading}
+            </h2>
+            <p className="text-sm md:text-base mb-4 text-gray-600">
+              {banners[currentSlide].subheading}
+            </p>
+            <button className="px-4 py-2 bg-[#005CA5] hover:bg-[#005ba5b9] text-white transition-colors duration-300">
+              {banners[currentSlide].buttonText}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Slide Controls - unchanged */}
-      <div className="relative pt-2 flex justify-center gap-2  ">
-        <div className="relative flex items-center justify-center gap-2">
+      {/* Desktop Layout*/}
+      {/* Desktop Layout (≥768px) */}
+      <div className="relative w-full hidden xl:block max-w-[1900px] mx-auto  ">
+        <section
+          className="relative w-full aspect-[16/6] max-h-[650px] bg-gray-100" // limit height
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Slides container */}
+          <div className="relative w-full h-full overflow-hidden">
+            {banners.map((banner, index) => (
+              <div
+                key={banner.id}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  currentSlide === index ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <div className="relative w-full h-full">
+                  <img
+                    src={banner.image}
+                    alt={banner.heading}
+                    className="w-full h-full object-cover"
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+
+                  {/* Desktop content box */}
+                  <div
+                    className="hidden sm:flex absolute 
+                left-[7%] top-[15%] lg:top-[20%] 
+                w-[40%] lg:w-[35%] 
+                min-w-[250px] max-w-[550px] 
+                bg-white flex-col gap-4 p-8 lg:p-12 shadow-sm"
+                  >
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-800">
+                      {banner.heading}
+                    </h2>
+                    <p className="text-sm lg:text-base mb-5 text-gray-600">
+                      {banner.subheading}
+                    </p>
+                    <button className="px-4 py-2 bg-[#005CA5] hover:bg-[#005ba5b9] text-white transition-colors max-w-[50%] duration-300">
+                      {banner.buttonText}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      {/* Controls */}
+      <div className="relative pt-4 flex justify-center gap-2">
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className="rounded-full outline outline-1 p-[2px]"
           >
             {isPlaying ? (
-              <FiPause size={12} className="fill-black " />
+              <FiPause size={12} className="fill-black" />
             ) : (
-              <FiPlay className="fill-black " size={12} />
+              <FiPlay size={12} className="fill-black" />
             )}
           </button>
 
-          <button
-            onClick={prevSlide}
-            className="p-3 rounded-full hover:outline-none"
-          >
+          <button onClick={prevSlide} className="p-3 rounded-full">
             <FiChevronLeft size={24} />
           </button>
 
@@ -137,19 +172,15 @@ const Banner = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full border  border-black transition-colors 
-                ${
-                  currentSlide === index
-                    ? "bg-black"
-                    : "bg-transparent hover:bg-white/50"
-                }`}
+              className={`w-3 h-3 rounded-full border border-black transition-colors ${
+                currentSlide === index
+                  ? "bg-black"
+                  : "bg-transparent hover:bg-white/50"
+              }`}
             />
           ))}
 
-          <button
-            onClick={nextSlide}
-            className="p-3 rounded-full hover:outline-none"
-          >
+          <button onClick={nextSlide} className="p-3 rounded-full">
             <FiChevronRight size={24} />
           </button>
         </div>
