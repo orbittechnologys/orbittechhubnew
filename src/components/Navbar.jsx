@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white dark:bg-gray-900 dark:text-gray-200 shadow-sm sticky top-0 z-50 ">
       {/* Top bar with hamburger menu, logo, and right icons */}
-      <div className="max-w-6xl mx-auto px-8 sm:px-8 lg:px-8 xl:px-0">
+      <div className="max-w-6xl mx-auto px-8 sm:px-8 lg:px-8 xl:px-0 2xl:max-w-[1700px]">
         <div className="flex justify-between h-16">
           {/* Left section - hamburger and logo */}
           <div className="flex items-center">
@@ -204,12 +204,12 @@ const Navbar = () => {
                   onClick={() => toggleDropdown(item.name)}
                 >
                   {item.name}
-                  <FiChevronDown
+                  {/* <FiChevronDown
                     className={`transform ${
                       activeDropdown === item.name ? "rotate-180" : ""
                     }`}
                     size={16}
-                  />
+                  /> */}
                 </button>
 
                 {activeDropdown === item.name && (
@@ -232,12 +232,7 @@ const Navbar = () => {
               <a
                 href="#"
                 className="block px-3 py-2  hover:text-gray-900 hover:bg-gray-50 rounded-md text-base font-medium hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"
-              >
-                <div className="flex items-center">
-                  <FiShoppingCart className="mr-2" size={20} />
-                  Cart
-                </div>
-              </a>
+              ></a>
               <a
                 href="#"
                 className="block px-3 py-2  hover:text-gray-900 hover:bg-gray-50 rounded-md text-base font-medium hover:underline decoration-1 underline-offset-4 hover:decoration-2 transition-all duration-200"

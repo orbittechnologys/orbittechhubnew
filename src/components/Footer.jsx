@@ -4,7 +4,7 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-gray-100 dark:bg-gray-900  dark:text-gray-300 items-center ">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto 2xl:max-w-[1700px]">
         {/* Social Icons */}
         <div className="  px-6 py-8 border-b border-gray-300 dark:border-gray-700">
           <div className="flex items-center gap-3">

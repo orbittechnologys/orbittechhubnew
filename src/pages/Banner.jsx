@@ -13,7 +13,6 @@ const Banner = () => {
     {
       id: 1,
       image: ban1,
-
       heading: "Orbit Care",
       subheading:
         "A comprehensive end-to-end clinic management solution, featuring dedicated modules for doctor portals.",
@@ -22,7 +21,6 @@ const Banner = () => {
     {
       id: 2,
       image: ban2,
-
       heading: "Orbit Learn",
       subheading:
         "A comprehensive Learning Management System designed for schools, colleges, and training institutions.",
@@ -31,7 +29,6 @@ const Banner = () => {
     {
       id: 3,
       image: ban3,
-
       heading: "Orbit Connect",
       subheading:
         "A LinkedIn-style platform designed for organizations to create and nurture internal communities.",
@@ -52,13 +49,14 @@ const Banner = () => {
   };
 
   useEffect(() => {
-    if (!isPlaying || isHovered) return; // stop if paused or hovered
+    if (!isPlaying || isHovered) return;
     const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
   }, [isPlaying, isHovered]);
 
   return (
-    <>
+    <div className="relative w-full">
+      {/* Banner Section - unchanged for desktop */}
       <section
         className="relative w-full aspect-[16/6] max-h-[800px] bg-gray-100 dark:bg-gray-900 dark:text-white"
         onMouseEnter={() => setIsHovered(true)}
@@ -76,13 +74,13 @@ const Banner = () => {
               <div className="relative w-full h-full">
                 <img
                   src={banner.image}
-                  alt={banner.alt}
+                  alt={banner.heading}
                   className="w-full h-full object-cover"
                   loading={index === 0 ? "eager" : "lazy"}
                 />
 
-                {/* White content box */}
-                <div className="absolute left-[5%] top-[10%] w-[40%] min-w-[300px] max-w-[600px] bg-white  p-6  shadow-xl">
+                {/* Desktop content box (unchanged) */}
+                <div className="hidden sm:block absolute left-[5%] top-[10%] w-[40%] min-w-[300px] max-w-[600px] bg-white dark:bg-gray-800 p-6 shadow-sm">
                   <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold mb-4 text-gray-800 dark:text-white">
                     {banner.heading}
                   </h2>
@@ -99,7 +97,22 @@ const Banner = () => {
         </div>
       </section>
 
-      {/* Slide Indicators - Fixed position */}
+      {/* Mobile content box (appears below banner) */}
+      <div className="sm:hidden w-full bg-white dark:bg-gray-800 p-4 shadow-xl">
+        <div className="max-w-[600px] mx-auto">
+          <h2 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">
+            {banners[currentSlide].heading}
+          </h2>
+          <p className="text-sm mb-4 text-gray-600 dark:text-gray-300">
+            {banners[currentSlide].subheading}
+          </p>
+          <button className="px-4 py-2 bg-[#0067B8] hover:bg-blue-700 text-white transition-colors duration-300">
+            {banners[currentSlide].buttonText}
+          </button>
+        </div>
+      </div>
+
+      {/* Slide Controls - unchanged */}
       <div className="relative pt-2 flex justify-center gap-2 dark:bg-gray-900 dark:text-white">
         <div className="relative flex items-center justify-center gap-2">
           <button
@@ -113,7 +126,6 @@ const Banner = () => {
             )}
           </button>
 
-          {/* Previous Button */}
           <button
             onClick={prevSlide}
             className="p-3 rounded-full hover:outline-none"
@@ -121,7 +133,6 @@ const Banner = () => {
             <FiChevronLeft size={24} />
           </button>
 
-          {/* Slide Indicators */}
           {banners.map((_, index) => (
             <button
               key={index}
@@ -135,7 +146,6 @@ const Banner = () => {
             />
           ))}
 
-          {/* Next Button */}
           <button
             onClick={nextSlide}
             className="p-3 rounded-full hover:outline-none"
@@ -144,7 +154,7 @@ const Banner = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

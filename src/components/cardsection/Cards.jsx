@@ -51,14 +51,14 @@ export default function Cards({ title, cards }) {
     <div
       className={`transition-colors duration-300 dark:bg-gray-900 dark:text-gray-50 px-4 sm:px-6 lg:px-8`}
     >
-      <div className="container px-4 py-12 max-w-6xl mx-auto">
+      <div className="container px-4 py-12 max-w-6xl mx-auto 2xl:max-w-[1700px]">
         <h1
           className={`text-3xl font-bold mb-8 transition-colors duration-300`}
         >
           {title}
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-8 place-items-center">
           {cards.map((card, index) => (
             <FadeInSection
               key={card.id}
