@@ -3,9 +3,9 @@ import { useTheme } from "../../context/ThemeContext";
 
 function FadeInSection({
   children,
-  threshold = 0.2, // % of element that must be visible
-  rootMargin = "0px 0px", // tweak if you want earlier trigger
-  className = "", // extra classes for your content
+  threshold = 0.2,
+  rootMargin = "0px 0px",
+  className = "",
 }) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -43,33 +43,22 @@ function FadeInSection({
   );
 }
 
-export default function Cards({ title, cards }) {
-  const { theme } = useTheme();
-  // const [selectedCard, setSelectedCard] = useState(null);
-
+export default function MicrosoftCards({ title, cards }) {
   return (
-    <div className={`transition-colors duration-300   px-4 sm:px-6 lg:px-8`}>
-      <div className="container px-4 py-12 max-w-6xl mx-auto 2xl:max-w-[1700px]">
-        <h1
-          className={`text-3xl font-bold mb-8 transition-colors duration-300`}
-        >
+    <div className="bg-white px-4 sm:px-6 lg:px-8 py-16 ">
+      <div className="container px-4 max-w-6xl mx-auto 2xl:max-w-[1700px] ">
+        <h1 className="text-2xl font-semibold mb-4 text-gray-900 text-start">
           {title}
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-8 place-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-4 gap-6 ">
           {cards.map((card, index) => (
             <FadeInSection
               key={card.id}
-              className={[
-                "relative max-w-xs rounded-sm bg-white overflow-hidden shadow-lg hover:scale-105",
-              ].join(" ")}
+              className="relative bg-white border border-gray-200 hover:shadow-md transition-all duration-200 shadow-lg"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br opacity-20 ${card.color}`}
-              />
-
-              <div className="relative z-10">
+              <div className="relative z-10 h-full flex flex-col">
                 {card.image && (
                   <img
                     src={card.image}
@@ -79,63 +68,42 @@ export default function Cards({ title, cards }) {
                   />
                 )}
 
-                <div className="p-6 flex flex-col justify-between h-56">
-                  <div>
-                    <h3
-                      className={`text-xl font-semibold  ${
-                        theme === "" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
+                <div className="px-4 py-2 flex flex-col flex-grow">
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
                       {card.title}
                     </h3>
-
-                    <h6
-                      className={`text-md  ${
-                        theme === "" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      {card.subtitle}
-                    </h6>
+                    <h6 className="text-sm text-black">{card.subtitle}</h6>
                   </div>
 
-                  <p
-                    className={` text-xs ${
-                      theme === "" ? "text-gray-300" : "text-gray-600"
-                    }`}
-                  >
-                    {card.description.split(" ").slice(0, 8).join(" ")}...
+                  <p className="text-sm text-black mb-6 flex-grow">
+                    {card.description}
                   </p>
 
-                  <div className="flex justify-start">
+                  <div className="mb-4">
                     <button
-                      className={`px-4 py-2  font-medium transition-colors duration-300 bg-[#005CA5] text-white hover:bg-[#005ba5d0] `}
-                      onClick={() => setSelectedCard(card.id)}
+                      className="px-4 py-1.5 font-medium transition-colors duration-300 
+                      bg-[#0067B8] text-white hover:bg-[#005CA5] text-sm
+                      flex items-center justify-center w-[56]"
                     >
-                      Learn More
+                      Learn more
+                      {/* <svg
+                        className="w-4 h-4 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg> */}
                     </button>
                   </div>
                 </div>
               </div>
-
-              {/* {selectedCard === card.id && (
-                <div className="absolute top-4 right-4">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              )} */}
             </FadeInSection>
           ))}
         </div>
