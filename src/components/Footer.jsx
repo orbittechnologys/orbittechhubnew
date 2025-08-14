@@ -3,7 +3,7 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 dark:bg-gray-900  dark:text-gray-300 items-center ">
+    <footer className="bg-gray-100 items-center ">
       <div className="max-w-6xl mx-auto 2xl:max-w-[1700px]">
         {/* Social Icons */}
         <div className="  px-6 py-8 border-b border-gray-300 dark:border-gray-700">
@@ -11,13 +11,15 @@ export default function Footer() {
             <span className="font-medium">Follow Orbit</span>
             <a
               href="https://www.linkedin.com/company/81867787/admin/dashboard/"
-              className="p-2 rounded-full   hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+              className="p-2 rounded-full   hover:bg-gray-300  transition"
+              target="_blank"
             >
               <FaLinkedin className="text-xl" />
             </a>
             <a
               href="https://www.instagram.com/orbit_technologys/"
-              className="p-2 rounded-full  dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+              className="p-2 rounded-full   hover:bg-gray-300 transition"
+              target="_blank"
             >
               <FaInstagram className="text-xl" />
             </a>

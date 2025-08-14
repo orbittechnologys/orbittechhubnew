@@ -45,12 +45,10 @@ function FadeInSection({
 
 export default function Cards({ title, cards }) {
   const { theme } = useTheme();
-  const [selectedCard, setSelectedCard] = useState(null);
+  // const [selectedCard, setSelectedCard] = useState(null);
 
   return (
-    <div
-      className={`transition-colors duration-300 dark:bg-gray-900 dark:text-gray-50 px-4 sm:px-6 lg:px-8`}
-    >
+    <div className={`transition-colors duration-300   px-4 sm:px-6 lg:px-8`}>
       <div className="container px-4 py-12 max-w-6xl mx-auto 2xl:max-w-[1700px]">
         <h1
           className={`text-3xl font-bold mb-8 transition-colors duration-300`}
@@ -63,12 +61,7 @@ export default function Cards({ title, cards }) {
             <FadeInSection
               key={card.id}
               className={[
-                "relative max-w-xs rounded-sm overflow-hidden shadow-lg",
-                selectedCard === card.id
-                  ? "ring-4 ring-blue-500 scale-105"
-                  : "",
-                theme === "dark" ? "bg-gray-800" : "bg-white",
-                "hover:scale-105",
+                "relative max-w-xs rounded-sm bg-white overflow-hidden shadow-lg hover:scale-105",
               ].join(" ")}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
@@ -90,7 +83,7 @@ export default function Cards({ title, cards }) {
                   <div>
                     <h3
                       className={`text-xl font-semibold  ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
+                        theme === "" ? "text-white" : "text-gray-900"
                       }`}
                     >
                       {card.title}
@@ -98,7 +91,7 @@ export default function Cards({ title, cards }) {
 
                     <h6
                       className={`text-md  ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
+                        theme === "" ? "text-white" : "text-gray-900"
                       }`}
                     >
                       {card.subtitle}
@@ -107,7 +100,7 @@ export default function Cards({ title, cards }) {
 
                   <p
                     className={` text-xs ${
-                      theme === "dark" ? "text-gray-300" : "text-gray-600"
+                      theme === "" ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
                     {card.description.split(" ").slice(0, 8).join(" ")}...
@@ -115,23 +108,16 @@ export default function Cards({ title, cards }) {
 
                   <div className="flex justify-start">
                     <button
-                      className={`px-4 py-2 rounded-lg font-medium transition-colors duration-300 
-                        ${
-                          selectedCard === card.id
-                            ? "bg-blue-600 text-white"
-                            : theme === "dark"
-                            ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                            : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                        }`}
+                      className={`px-4 py-2  font-medium transition-colors duration-300 bg-[#005CA5] text-white hover:bg-[#005ba5d0] `}
                       onClick={() => setSelectedCard(card.id)}
                     >
-                      {selectedCard === card.id ? "Selected" : "Learn More"}
+                      Learn More
                     </button>
                   </div>
                 </div>
               </div>
 
-              {selectedCard === card.id && (
+              {/* {selectedCard === card.id && (
                 <div className="absolute top-4 right-4">
                   <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
                     <svg
@@ -149,7 +135,7 @@ export default function Cards({ title, cards }) {
                     </svg>
                   </div>
                 </div>
-              )}
+              )} */}
             </FadeInSection>
           ))}
         </div>

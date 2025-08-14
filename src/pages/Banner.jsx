@@ -58,7 +58,7 @@ const Banner = () => {
     <div className="relative w-full">
       {/* Banner Section - unchanged for desktop */}
       <section
-        className="relative w-full aspect-[16/6] max-h-[800px] bg-gray-100 dark:bg-gray-900 dark:text-white"
+        className="relative w-full aspect-[16/6] max-h-[800px] bg-gray-100  "
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -80,14 +80,14 @@ const Banner = () => {
                 />
 
                 {/* Desktop content box (unchanged) */}
-                <div className="hidden sm:block absolute left-[5%] top-[10%] w-[40%] min-w-[300px] max-w-[600px] bg-white dark:bg-gray-800 p-6 shadow-sm">
-                  <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+                <div className="hidden sm:block absolute left-[5%] top-[10%] w-[40%] min-w-[300px] max-w-[600px] bg-white  p-6 shadow-sm">
+                  <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold mb-4 text-gray-800 ">
                     {banner.heading}
                   </h2>
-                  <p className="text-sm lg:text-base mb-6 text-gray-600 dark:text-gray-300">
+                  <p className="text-sm lg:text-base mb-6 text-gray-600 ">
                     {banner.subheading}
                   </p>
-                  <button className="px-4 py-2 bg-[#0067B8] hover:bg-blue-700 text-white transition-colors duration-300">
+                  <button className="px-4 py-2 bg-[#005CA5] hover:bg-[#005ba5b9] text-white transition-colors duration-300">
                     {banner.buttonText}
                   </button>
                 </div>
@@ -98,12 +98,12 @@ const Banner = () => {
       </section>
 
       {/* Mobile content box (appears below banner) */}
-      <div className="sm:hidden w-full bg-white dark:bg-gray-800 p-4 shadow-xl">
+      <div className="sm:hidden w-full bg-white  p-4 shadow-xl">
         <div className="max-w-[600px] mx-auto">
-          <h2 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">
+          <h2 className="text-xl font-bold mb-2 text-gray-800 ">
             {banners[currentSlide].heading}
           </h2>
-          <p className="text-sm mb-4 text-gray-600 dark:text-gray-300">
+          <p className="text-sm mb-4 text-gray-600 ">
             {banners[currentSlide].subheading}
           </p>
           <button className="px-4 py-2 bg-[#0067B8] hover:bg-blue-700 text-white transition-colors duration-300">
@@ -113,16 +113,16 @@ const Banner = () => {
       </div>
 
       {/* Slide Controls - unchanged */}
-      <div className="relative pt-2 flex justify-center gap-2 dark:bg-gray-900 dark:text-white">
+      <div className="relative pt-2 flex justify-center gap-2  ">
         <div className="relative flex items-center justify-center gap-2">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className="rounded-full outline outline-1 p-[2px]"
           >
             {isPlaying ? (
-              <FiPause size={12} className="fill-black dark:fill-white" />
+              <FiPause size={12} className="fill-black " />
             ) : (
-              <FiPlay className="fill-black dark:fill-white" size={12} />
+              <FiPlay className="fill-black " size={12} />
             )}
           </button>
 
@@ -137,10 +137,10 @@ const Banner = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full border dark:border-white border-black transition-colors 
+              className={`w-3 h-3 rounded-full border  border-black transition-colors 
                 ${
                   currentSlide === index
-                    ? "dark:bg-white bg-black"
+                    ? "bg-black"
                     : "bg-transparent hover:bg-white/50"
                 }`}
             />
